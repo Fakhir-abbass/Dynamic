@@ -24,3 +24,24 @@ a {
     background: black;
   }
 }
+.input-style{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.input-style input{
+  padding: 10px;
+  background: #efefef;
+  border: 1px solid pink;
+  margin-left: 10px;
+}
+
+.form-div button{
+  margin-left: 10px;
+  padding: 10px 20px;
+  box-shadow: none;
+  border: none;
+  background: pink;
+  font-weight: 700;
+  font-size: 20px;
+}
