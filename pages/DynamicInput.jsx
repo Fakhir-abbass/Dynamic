@@ -1,5 +1,6 @@
+import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useState } from "react";
-
 const Submitform = () => {
     const [inputfield, setInputfield] = useState([{firstName: ""}]);
 
@@ -41,8 +42,8 @@ const Submitform = () => {
         onChange={(e) => handleChangeinput(index, e)}
         />
   
-        <button  onClick={()=> handledelete(index)}>-</button>
-       <button  onClick={() => handleAddfield(index + 1)}>+</button>
+        <button  onClick={()=> handledelete(index)}><DeleteIcon/></button>
+       <button  onClick={() => handleAddfield(index + 1)}> <AddIcon/></button>
        </div>
     })}
     <div className="text-center mt-4">
