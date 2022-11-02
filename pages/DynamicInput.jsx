@@ -1,16 +1,24 @@
-
 import { useState } from "react";
+
 const Submitform = () => {
-    const [inputfield, setInputfield] = useState([{firstName:'', lastName:''}, {firstName:'', lastName:''}]);
+    const [inputfield, setInputfield] = useState([{firstName: ""}]);
+
+
     const handleChangeinput = (index, e) =>{
-        const values =[...inputfield]
-        values[index][e.target.name]= e.target.value;
-        setInputfield(values);
+        const list =[...inputfield]
+        list[index][e.target.name]= e.target.value;
+        setInputfield(list);
     }
-    const handleAddfield =() =>{
-        setInputfield([...inputfield, {firstName:'', lastName:''}])
-        
-    }
+    const handleAddfield = (index) => {
+        setInputfield([
+          ...inputfield.slice(0, index),
+          {
+            firstName: "",
+          },
+          ...inputfield.slice(index),
+        ]);
+      };
+
     const handledelete =(index) =>{
         const value = [...inputfield];
         value.splice(index, 1);
@@ -20,6 +28,7 @@ const Submitform = () => {
         e.preventDefault();
         console.log("inputfield", inputfield )
     }
+
     return (  
 <form className="form-div" onSubmit={handleSubmit}>
     { 
@@ -29,17 +38,11 @@ const Submitform = () => {
         value={items.firstName}
         name = "firstName"
         placeholder="FirstName"
-        variant ="filled"
-        onChange={e => handleChangeinput(index, e)}
+        onChange={(e) => handleChangeinput(index, e)}
         />
-         <input 
-        value={items.lastName}
-        name = "lastName"
-        placeholder="LastName"
-        onChange={e => handleChangeinput(index, e)}
-        />
+  
         <button  onClick={()=> handledelete(index)}>-</button>
-       <button  onClick={() => handleAddfield()}>+</button>
+       <button  onClick={() => handleAddfield(index + 1)}>+</button>
        </div>
     })}
     <div className="text-center mt-4">
